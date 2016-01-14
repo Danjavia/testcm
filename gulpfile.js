@@ -5,7 +5,7 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var babelify = require('babelify');
-varassign = require('lodash.assign');
+var assign = require('lodash.assign');
 var notifier = require('node-notifier');
 var server = require('gulp-server-livereload');
 var concat = require('gulp-concat');
@@ -40,8 +40,6 @@ var customOpts = {
   transform: [babelify],
   extensions: ['.jsx']
 };
-var opts = assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
 
 // var bundler = watchify(browserify({
 //   entries: ['./src/app.jsx'],
