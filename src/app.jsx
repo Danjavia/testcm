@@ -7,6 +7,7 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
 import HomePage from './homepage'
 import NFound from './componentsv2/notFound'
 import Home from './componentsv2/home'
+import Products from './componentsv2/products/products'
 
 
 // Root component
@@ -15,7 +16,7 @@ export default class Root extends Component {
     return (
       <Router history={browserHistory}>
         <Route path='/' component={HomePage}>
-          <IndexRoute component={Home} />
+          <IndexRoute component={Products} />
           <Route path='about' component={NFound} />
           <Route path='contact' component={NFound} />
           <Route path='*' component={NFound} />
