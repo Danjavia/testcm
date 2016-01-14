@@ -1,0 +1,5 @@
+node_modules/
+main.js
+style.css
+nom-debug.log
+.DS_Store

@@ -1,0 +1,1 @@
+- Settear campaign modes para diferenciar los funnels en woopra more info [woopra campaigns](https://www.woopra.com/docs/manual/campaign-tracking/) and [Funnels API](https://www.woopra.com/docs/developer/funnels-api/)

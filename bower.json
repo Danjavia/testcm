@@ -1,0 +1,30 @@
+{
+  "name": "ImaginariumV2",
+  "description": "Anlytics app",
+  "main": "main.js",
+  "authors": [
+    "Danny Viasus"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "analytics",
+    "woopra",
+    "kissmetrics",
+    "tackjs"
+  ],
+  "homepage": "https://github.com/Danjavia/imaginariumv2",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
