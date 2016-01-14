@@ -1,20 +1,36 @@
-import React from 'react';  
-import ReactDOM from 'react-dom';
+import React, { PropTypes, Component } from 'react'
+import ReactDOM, { render } from 'react-dom'
+import createBrowserHistory from 'history/lib/createBrowserHistory'
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
 
-class App extends React.Component {  
-  constructor (props) {
-      super(props);
-      this.state = {};
-  }
+// Include Components
+import Navbar from './componentsv2/navbar'
+import NFound from './componentsv2/notFound'
+import Home from './componentsv2/home'
 
+class App extends Component {
   render() {
     return (
-        <div>
-            Hello Danny!
-        </div>
-    );
+      <div>
+        <Navbar />
+        {this.props.children}
+      </div>
+    )
   }
-
 }
 
-ReactDOM.render(<App />, document.querySelector("#content")); 
+export default class Root extends Component {
+  render() {
+    return (
+      <Router history={browserHistory}>
+        <Route path='/' component={App}>
+          <IndexRoute component={Home} />
+          <Route path='about' component={NFound} />
+          <Route path='contact' component={NFound} />
+        </Route>
+      </Router>
+    );
+  }
+}
+
+render( <Root/>, document.getElementById('content') )
