@@ -51,7 +51,7 @@ var customOpts = {
 //   fullPaths: true
 // }));
 
-var bundler = watchify(browserify(assign({}, watchify.args, customOpts)));
+var bundler = watchify(browserify(customOpts).transform(babelify));
 
 function bundle() {
   return bundler
