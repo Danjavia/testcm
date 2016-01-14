@@ -1,0 +1,24 @@
+[
+	{
+		"_id": 1,
+		"username": "danjavia",
+		"email": "d@danjavia.xyz",
+		"billingInfo": {
+			"name": "DANNY VIASUS",
+			"cc_number": "12341257124",
+			"cvc": "564",
+			"cc_type": "amex"
+		}
+	},
+	{
+		"_id": 2,
+		"username": "Deviacode",
+		"email": "danny.viasus@comparamejor.com",
+		"billingInfo": {
+			"name": "DANNY VIASUS",
+			"cc_number": "12341257124",
+			"cvc": "564",
+			"cc_type": "amex"
+		}
+	}
+]

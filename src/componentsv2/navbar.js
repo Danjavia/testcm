@@ -18,7 +18,7 @@ class Navbar extends React.Component {
 		return (
 			<nav className="red darken-4">
 	            <div className="nav-wrapper container">
-	                <Link to="/" className="brand-logo">Woopra Test</Link>
+	                <Link to="/" className="brand-logo">Demo Page</Link>
 	                <ul className="right hide-on-med-and-down app-menu">
 	                    <li><Link to='/'>Home</Link></li>
 	                    <li><Link to='/login'>login</Link></li>
