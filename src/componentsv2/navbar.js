@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router';
 
 // Home component
 class Navbar extends React.Component {
@@ -17,10 +18,10 @@ class Navbar extends React.Component {
 		return (
 			<nav className="red darken-4">
 	            <div className="nav-wrapper container">
-	                <a href="#/" className="brand-logo">Woopra Test</a>
+	                <Link to="/" className="brand-logo">Woopra Test</Link>
 	                <ul className="right hide-on-med-and-down app-menu">
-	                    <li><a href="#/">Home</a></li>
-	                    <li><a href="#/login">login</a></li>
+	                    <li><Link to='/'>Home</Link></li>
+	                    <li><Link to='/login'>login</Link></li>
 	                    { this.state.auth ? <li><a href="#/" onClick={this.logout}>Logout</a></li> : null }
 	                </ul>
 	            </div>

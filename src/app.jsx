@@ -27,6 +27,7 @@ export default class Root extends Component {
           <IndexRoute component={Home} />
           <Route path='about' component={NFound} />
           <Route path='contact' component={NFound} />
+          <Route path='*' component={NFound} />
         </Route>
       </Router>
     );
