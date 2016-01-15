@@ -1,17 +1,22 @@
 import React, { PropTypes, Component } from 'react'
+import $ from 'jquery'
 
 class Login extends Component {
 
 	constructor (props) {
 		super(props)
+
 		this.state = {
 			signup: false
 		}
+
+		this.loginurl = 'http://localhost:1337/login'
+		this.register = 'http://localhost:1337/register'
 	}
 
 	handleSubmit ( e ) {
 		e.preventDefault()
-		console.log( this.state )
+		console.log( this.state, this.loginurl )
 
 		let userInfo = {
 			username: this.refs.username.value.trim(),
@@ -19,12 +24,48 @@ class Login extends Component {
 		}
 
 		console.log( userInfo )
+
+		$.ajax({
+	      	url: this.loginurl,
+	      	method: 'POST',
+	      	success: ((data) => {
+	      		console.log(data)
+
+				this.setState({
+					signup: true
+				})
+
+				window.location.href = '/'
+	      	})
+	    })
 	}
 
-	registerUser () {
-		this.setState({
-			signup: true
-		})
+	registerUser ( e ) {
+		e.preventDefault()
+
+		console.log( this.state, this.loginurl )
+
+		let userInfo = {
+			username: this.refs.username.value.trim(),
+			password: this.refs.password.value.trim()
+		}
+
+		console.log( userInfo )
+
+		$.ajax({
+	      	url: this.register,
+	      	method: 'POST',
+	      	success: ((data) => {
+
+	      		console.log(data)
+
+				this.setState({
+					signup: true
+				})
+
+				window.location.href = '/'
+	      	})
+	    })
 	}
 
 	render() {
