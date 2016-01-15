@@ -16,7 +16,7 @@ class Navbar extends React.Component {
 
 	render () {
 		return (
-			<nav className="red darken-4">
+			<nav className="grey darken-4">
 	            <div className="nav-wrapper container">
 	                <Link to="/" className="brand-logo">Demo Page</Link>
 	                <ul className="right hide-on-med-and-down app-menu">
