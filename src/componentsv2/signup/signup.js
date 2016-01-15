@@ -11,7 +11,7 @@ class Login extends Component {
 		}
 
 		this.loginurl = 'http://localhost:1337/login'
-		this.register = 'http://localhost:1337/register'
+		this.registerurl = 'http://localhost:1337/register'
 	}
 
 	handleSubmit ( e ) {
@@ -53,8 +53,10 @@ class Login extends Component {
 		console.log( userInfo )
 
 		$.ajax({
-	      	url: this.register,
+	      	url: this.registerurl,
 	      	method: 'POST',
+			processData: false,
+			contentType: false,
 	      	success: ((data) => {
 
 	      		console.log(data)
@@ -62,8 +64,6 @@ class Login extends Component {
 				this.setState({
 					signup: true
 				})
-
-				window.location.href = '/'
 	      	})
 	    })
 	}
