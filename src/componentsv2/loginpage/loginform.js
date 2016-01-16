@@ -1,10 +1,12 @@
 import React, { PropTypes, Component } from 'react'
-import $ from 'jquery'
 
-class Login extends Component {
+// import components here
 
-	constructor (props) {
-		super(props)
+class LoginForm extends Component {
+
+	constructor ( props ) {
+		
+		super( props )
 
 		this.state = {
 			signup: false
@@ -27,8 +29,8 @@ class Login extends Component {
 	      	method: 'POST',
 	      	data: userInfo,
 	      	dataType: 'json',
-	      	success: ((data) => {
-	      		console.log(data)
+	      	success: (( data ) => {
+	      		console.log( data )
 
 	      		if ( data.code ) {
 	      			Materialize.toast( data.error, 1500 )
@@ -58,9 +60,9 @@ class Login extends Component {
 	      	method: 'POST',
 	      	data: userInfo,
 	      	dataType: 'json',
-	      	success: ((data) => {
+	      	success: (( data ) => {
 
-	      		console.log(data)
+	      		console.log( data )
 
 	      		if ( data.code ) {
 	      			Materialize.toast( data.error, 1500 )
@@ -71,17 +73,19 @@ class Login extends Component {
 					signup: true,
 					user: data
 				})
+
+				window.location.href = '/#/billing-info'
 	      	})
 	    })
 	}
 
-	render() {
+	render () {
 		return (
-            <div className="col x12 m6 l3" id="login-form">
+			<div className="col x12 m6 l3" id="login-form">
                 <div className="row center-align">
                     <form className="col s12 m12 l12" onSubmit={this.handleSubmit.bind(this)}>
                         <div className="row">
-                            <h3>Sign In</h3>
+                            <h5>User Registration Process</h5>
                         </div>
                         <div className="row">
                             <div className="input-field col s12 m12 l12">
@@ -110,8 +114,9 @@ class Login extends Component {
                     </form>
                 </div>
             </div>
-        )
+		)
 	}
 }
 
-export default Login
+
+export default LoginForm

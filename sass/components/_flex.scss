@@ -1,0 +1,11 @@
+.flex {
+	display: flex;
+
+	.product {
+		flex: 4;
+	}
+
+	.banner {
+		flex: 1;
+	}
+}
