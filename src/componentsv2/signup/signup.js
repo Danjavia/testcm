@@ -30,20 +30,17 @@ class Login extends Component {
 	      	success: ((data) => {
 	      		console.log(data)
 
-	      		if ( data.code == 400 )
-	      			Materialize.toast( data.error, 4000 )
-
-	      		if ( data.code == 404 )
-	      			Materialize.toast( data.error, 4000 )
-
-	      		if ( data.code == 500 )
-	      			Materialize.toast( data.error, 4000 )
+	      		if ( data.code ) {
+	      			Materialize.toast( data.error, 1500 )
+	      			return
+	      		}
 
 				this.setState({
-					signup: true
+					signup: true,
+					user: data
 				})
 
-				// window.location.href = '/'
+				window.location.href = '/#/profile'
 	      	})
 	    })
 	}
@@ -65,14 +62,14 @@ class Login extends Component {
 
 	      		console.log(data)
 
-	      		if ( data.code == 400 )
-	      			Materialize.toast( data.error, 4000 )
-
-	      		if ( data.code == 500 )
-	      			Materialize.toast( data.error, 4000 )
+	      		if ( data.code ) {
+	      			Materialize.toast( data.error, 1500 )
+	      			return
+	      		}
 
 				this.setState({
-					signup: true
+					signup: true,
+					user: data
 				})
 	      	})
 	    })
