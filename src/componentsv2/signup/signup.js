@@ -28,6 +28,8 @@ class Login extends Component {
 		$.ajax({
 	      	url: this.loginurl,
 	      	method: 'POST',
+	      	data: userInfo,
+	      	dataType: 'json',
 	      	success: ((data) => {
 	      		console.log(data)
 
@@ -35,7 +37,7 @@ class Login extends Component {
 					signup: true
 				})
 
-				window.location.href = '/'
+				// window.location.href = '/'
 	      	})
 	    })
 	}
@@ -55,8 +57,8 @@ class Login extends Component {
 		$.ajax({
 	      	url: this.registerurl,
 	      	method: 'POST',
-			processData: false,
-			contentType: false,
+	      	data: userInfo,
+	      	dataType: 'json',
 	      	success: ((data) => {
 
 	      		console.log(data)
@@ -102,9 +104,7 @@ class Login extends Component {
                         </div>
                     </form>
                 </div>
-                <div onClick={this.handleSubmit.bind(this)}>alert</div>
             </div>
-            
         )
 	}
 }
