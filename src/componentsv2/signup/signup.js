@@ -16,14 +16,11 @@ class Login extends Component {
 
 	handleSubmit ( e ) {
 		e.preventDefault()
-		console.log( this.state, this.loginurl )
 
 		let userInfo = {
 			username: this.refs.username.value.trim(),
 			password: this.refs.password.value.trim()
 		}
-
-		console.log( userInfo )
 
 		$.ajax({
 	      	url: this.loginurl,
@@ -32,6 +29,15 @@ class Login extends Component {
 	      	dataType: 'json',
 	      	success: ((data) => {
 	      		console.log(data)
+
+	      		if ( data.code == 400 )
+	      			Materialize.toast( data.error, 4000 )
+
+	      		if ( data.code == 404 )
+	      			Materialize.toast( data.error, 4000 )
+
+	      		if ( data.code == 500 )
+	      			Materialize.toast( data.error, 4000 )
 
 				this.setState({
 					signup: true
@@ -45,14 +51,10 @@ class Login extends Component {
 	registerUser ( e ) {
 		e.preventDefault()
 
-		console.log( this.state, this.loginurl )
-
 		let userInfo = {
 			username: this.refs.username.value.trim(),
 			password: this.refs.password.value.trim()
 		}
-
-		console.log( userInfo )
 
 		$.ajax({
 	      	url: this.registerurl,
@@ -62,6 +64,12 @@ class Login extends Component {
 	      	success: ((data) => {
 
 	      		console.log(data)
+
+	      		if ( data.code == 400 )
+	      			Materialize.toast( data.error, 4000 )
+
+	      		if ( data.code == 500 )
+	      			Materialize.toast( data.error, 4000 )
 
 				this.setState({
 					signup: true
