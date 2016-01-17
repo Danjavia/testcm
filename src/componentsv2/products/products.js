@@ -3,12 +3,13 @@ import React, { PropTypes, Component } from 'react'
 // Include Components
 import Navbar from '../navbar'
 import Product from '../product/product'
+import Sidebanner from '../banner/sidebanner'
 
 class Products extends Component {
 
 	constructor ( props ) {
 		
-		super( props )
+		super ( props )
 
 		this.state = {
 			products: []
@@ -48,13 +49,12 @@ class Products extends Component {
 	    return (
 	    	<div>
 			    <Navbar />
+			    <h4 className="container center-align" style={{ marginTop: '50px', marginBottom: '40px' }}>Check all our products</h4>
 			    <div className="flex container">
-			      	<div className="row container products">
+			      	<div className="row products">
 			    		{ products.length > 0 ? products : <h3>No products here</h3> }
 			      	</div>
-			      	<div className="banner">
-			      		<h2>Here goes a banner sample</h2>
-			      	</div>
+			      	<Sidebanner />
 			    </div>
 	    	</div>
 	    );

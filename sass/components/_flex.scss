@@ -1,11 +1,30 @@
 .flex {
 	display: flex;
+	justify-content: space-between;
 
-	.product {
-		flex: 4;
+	.products, .single {
+		flex: 5;
 	}
 
-	.banner {
-		flex: 1;
+	.banner, aside {
+		flex: 2;
+		margin-top: 65px;
+		margin-left: 30px;
+
+		.ads {
+			background: $dark;
+			box-sizing: border-box;
+			padding: 10px 10px 20px;
+		}
+
+		img {
+			width: 100%;
+			object-fit: cover;
+			background: $light;
+			box-sizing: border-box;
+			padding: 3px;
+		}
 	}
+
+	aside { margin-top: 20px; }
 }

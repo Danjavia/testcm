@@ -11,6 +11,8 @@ import HomePage from './homepage'
 import NFound from './componentsv2/notFound'
 import Home from './componentsv2/home'
 import Products from './componentsv2/products/products'
+import ProductSingle from './componentsv2/products/productsingle'
+import SinglePage from './componentsv2/singlepage/singlepage'
 import LoginPage from './componentsv2/loginpage/loginpage'
 import BillingInfoPage from './componentsv2/billing-infopage/billing-infopage'
 
@@ -26,6 +28,9 @@ export default class Root extends Component {
           <Route path='contact' component={NFound} />
           <Route path='login' component={LoginPage} />
           <Route path='billing-info' component={BillingInfoPage} />
+          <Route path="products" component={ProductSingle}>
+            <Route path="/product/:productId" component={SinglePage}/>
+          </Route>
           <Route path='*' component={NFound} />
         </Route>
       </Router>

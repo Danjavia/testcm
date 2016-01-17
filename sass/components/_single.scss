@@ -1,9 +1,9 @@
-.product {
+.single {
 	margin-bottom: 20px;
 	width: 50%!important;
 
 	&__name {
-		font-size: 1.5em;
+		font-size: 2em;
 		font-weight: 600;
 	}
 
@@ -25,4 +25,10 @@
 	&__buy {
 		top: -7px;
 	}	
+
+	&__actions {
+		h4 {
+			font-weight: 700;
+		}
+	}
 }

@@ -6,7 +6,7 @@ class LoginForm extends Component {
 
 	constructor ( props ) {
 		
-		super( props )
+		super ( props )
 
 		this.state = {
 			signup: false
@@ -52,7 +52,8 @@ class LoginForm extends Component {
 
 		let userInfo = {
 			username: this.refs.username.value.trim(),
-			password: this.refs.password.value.trim()
+			password: this.refs.password.value.trim(),
+			avatar: 'https://unsplash.it/200/300?image=' + Math.floor(( Math.random() * 500 ) + 1 ) 
 		}
 
 		$.ajax({
