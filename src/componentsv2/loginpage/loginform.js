@@ -31,7 +31,6 @@ class LoginForm extends Component {
 	      	data: userInfo,
 	      	dataType: 'json',
 	      	success: (( data ) => {
-	      		console.log( data )
 
 	      		if ( data.code ) {
 	      			Materialize.toast( data.error, 1500 )
@@ -39,9 +38,12 @@ class LoginForm extends Component {
 	      		}
 
 				this.setState({
-					signup: true,
+					signed: true,
 					user: data
 				})
+
+				localStorage.signed = true
+                localStorage.sid = this.state.user.id
 
 	      	})
 	    }).done(( data ) => {
@@ -71,6 +73,7 @@ class LoginForm extends Component {
 	    	}
 
 	    	if ( localStorage.promo ) {
+
 	    		// create relation data
 	    		let attachedData = {
 	    			userId: data.id,

@@ -92,7 +92,6 @@ class SideProduct extends Component {
 	      				<p>
 	      					Register now and get this course only for $10 USD.
 	      				</p>
-	      				<ActionsPanel />
 	      			</article>
 				</div>
 	      	</aside>

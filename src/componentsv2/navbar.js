@@ -10,8 +10,18 @@ class Navbar extends React.Component {
 		super ( props )
 
 		this.state = {
-			auth: false
+			auth: localStorage.signed || false
 		}
+	}
+
+	logout ( e ) {
+
+		e.preventDefault()
+
+		delete localStorage.sid
+		delete localStorage.signed
+
+		window.location.href = '/'
 	}
 
 	render () {
@@ -21,8 +31,8 @@ class Navbar extends React.Component {
 	                <Link to="/" className="brand-logo">Woopra</Link>
 	                <ul className="right hide-on-med-and-down app-menu">
 	                    <li><Link to='/'>Home</Link></li>
-	                    <li><Link to='/login'>Login</Link></li>
-	                    { this.state.auth ? <li><a href="#/" onClick={this.logout}>Logout</a></li> : null }
+	                    { this.state.auth ? <li><Link to='#/profile'>Profile</Link></li> : null }
+	                    { this.state.auth ? <li><a href="#/" onClick={this.logout.bind( this )}>Logout</a></li> : <li><Link to='/login'>Login</Link></li> }
 	                </ul>
 	            </div>
 	        </nav>

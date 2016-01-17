@@ -46,20 +46,22 @@ class BillingForm extends Component {
 	      	dataType: 'json',
 	      	success: (( data ) => {
 
-	      		console.log( data )
-
 	      		if ( data.code ) {
 	      			Materialize.toast( data.error, 1500 )
 	      			return
 	      		}
 
 				this.setState({
-					signup: true,
+					signed: true,
 					user: data
 				})
 
                 // Delete persited user info
                 delete localStorage.loginProcess
+
+                // set user as signed
+                localStorage.signed = true
+                localStorage.sid = this.state.user.id
 
                 Materialize.toast( 'Welcome to the app. You\'ll be redirect to your profile in a few seconds', 1500 )
 
@@ -73,28 +75,46 @@ class BillingForm extends Component {
             if ( data.code ) return
 
             if ( localStorage.saleProduct ) {
-                alert( localStorage.saleProduct )
 
-                // $.ajax({
-                //  url: this.loginurl,
-                //  method: 'GET',
-                //  dataType: 'json',
-                //  data: null,
-                //  success: (( data ) => {
-                //      this.setState({
-                //          attr: value
-                //      })
-                //  })
-                // }.bind( this ))
+                // create relation data
+                let attachedData = {
+                    userId: data.id,
+                    productId: localStorage.pid
+                }
+
+                $.ajax({
+                    url: this.attachurl,
+                    method: 'POST',
+                    dataType: 'json',
+                    data: attachedData,
+                    success: (( data ) => {
+                        Materialize.toast( data.data, 1500 )
+                    })
+                })
 
                 delete localStorage.saleProduct 
                 delete localStorage.pid 
             }
 
             if ( localStorage.promo ) {
-                alert( localStorage.promo )
+                
+                // create relation data
+                let attachedData = {
+                    userId: data.id,
+                    productId: localStorage.pid
+                }
 
-                delete localStorage.promo 
+                $.ajax({
+                    url: this.attachurl,
+                    method: 'POST',
+                    dataType: 'json',
+                    data: attachedData,
+                    success: (( data ) => {
+                        Materialize.toast( data.data, 1500 )
+                    })
+                })
+
+                delete localStorage.saleProduct 
                 delete localStorage.pid 
             }
 
@@ -121,7 +141,7 @@ class BillingForm extends Component {
                             <div className="input-field col s12 m12 l12">
                                 <i className="material-icons prefix">credit_card</i>
                                 <input id="ccn" ref="ccn" type="text" className="validate" pattern="[0-9]{13,16}" maxLength="16" required/>
-                                <label htmlFor="ccn" data-error="Only numbers" data-success="right">Credit card number</label>
+                                <label htmlFor="ccn" data-error="Number at least to 13 digits" data-success="right">Credit card number</label>
                             </div>
                         </div>
                         <div className="row">
