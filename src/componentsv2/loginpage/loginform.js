@@ -104,10 +104,10 @@ class LoginForm extends Component {
                         </div>
                         <div className="row">
                             <div className="input-field col s12 m12 l12">
-                                <button className="btn waves-effect waves-light action-button signin" type="submit" name="action" onClick={this.handleSubmit.bind(this)}>Sign in
+                                <button className="btn waves-effect waves-light action-button signin" type="submit" name="action" onClick={this.handleSubmit.bind(this)}>Login
                                     <i className="material-icons right">lock</i>
                                 </button>
-                                <button className="btn blue waves-effect waves-light action-button" type="submit" name="action" onClick={this.registerUser.bind(this)}>Sign up
+                                <button className="btn blue waves-effect waves-light action-button" type="submit" name="action" onClick={this.registerUser.bind(this)}>Signup
                                     <i className="material-icons right">account_circle</i>
                                 </button>
                             </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 class Product extends Component {
 	render() {
 		return (
-			<div className="col s12 m6 l4 product" id={this.props.data.id}>
+			<div className="col s12 m6 l4 product hoverable" id={this.props.data.id}>
 				<Link className="teal-text darken-4" to={`/product/${this.props.data.id}`}><h3 className="product__name">{this.props.data.name}</h3></Link>
 				<Link to={`/product/${this.props.data.id}`}><img src={this.props.data.image} className="product__image" alt="placeholder+image" /></Link>
 				<p className="product__description">

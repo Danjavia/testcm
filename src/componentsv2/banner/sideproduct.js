@@ -58,11 +58,12 @@ class SideProduct extends Component {
 				<div className="single__actions">
 					<h4>Actions</h4>
 	      			<article>
-	      				<h5><strong style={{ fontWeight: 700 }}>Price: $ { this.state.product ? this.state.product.price : null } USD</strong></h5>
+	      				<h5><strong style={{ fontWeight: 700 }}>Price: ${ this.state.product ? this.state.product.price : null } USD</strong></h5>
 	      				<a href="/assets/images/dweb.jpg" download className="btn waves-effect waves-light green" onClick={this.simulateSale.bind( this )}>Buy & download</a>
-	      				<br/>
-	      				<br/>
-	      				<a href={`http://www.twitter.com/share?url=http://localhost:3000/product/${ this.state.product ? this.state.product.id : null }` } className="btn waves-effect waves-light red" onClick={ this.trackShare.bind( this ) }>Share</a>
+	      				<p>
+	      					Buy and download directly. (without login or signup) 
+	      				</p>
+	      				<a href={`http://www.twitter.com/share?url=http://localhost:3000/product/${ this.state.product ? this.state.product.id : null }` } className="btn waves-effect waves-light red" onClick={ this.trackShare.bind( this ) }>Share It!</a>
 	      				<p>Register now and get this course only for $10 USD.</p>
 	      				<a className="btn waves-effect waves-light blue" onClick={this.signInPromo.bind( this )}>Get offer now</a>
 	      				<ActionsPanel />
