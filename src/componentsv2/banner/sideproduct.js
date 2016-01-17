@@ -12,6 +12,7 @@ class SideProduct extends Component {
 	
 		this.state = {}
 	    this.producturl = 'http://localhost:1337/products/'
+	    this.attachurl = 'http://localhost:1337/attach'
 	}
 
 	findProductById ( id ) {
@@ -61,6 +62,34 @@ class SideProduct extends Component {
 
 		localStorage.saleProduct = true
 		localStorage.pid = this.props.data
+
+		if ( localStorage.signed ) {
+
+    		// create relation data
+    		let attachedData = {
+    			userId: localStorage.sid,
+    			productId: localStorage.pid
+    		}
+
+	    	$.ajax({
+	    		url: this.attachurl,
+	    		method: 'POST',
+	    		dataType: 'json',
+	    		data: attachedData,
+	    		success: (( data ) => {
+	    			Materialize.toast( data.data, 1500 )
+	    		})
+	    	})
+
+    		delete localStorage.saleProduct 
+    		delete localStorage.pid 
+
+			setTimeout( () => {
+				window.location.href = '/#/profile'
+			}, 2000 )
+
+			return
+		}
 
 		window.location.href = '/#/login'
 	}
