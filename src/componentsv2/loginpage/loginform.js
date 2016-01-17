@@ -14,6 +14,7 @@ class LoginForm extends Component {
 
 		this.loginurl = 'http://localhost:1337/login'
 		this.registerurl = 'http://localhost:1337/register'
+		this.attachurl = 'http://localhost:1337/attach'
 	}
 
 	handleSubmit ( e ) {
@@ -42,8 +43,36 @@ class LoginForm extends Component {
 					user: data
 				})
 
-				window.location.href = '/#/profile'
 	      	})
+	    }).done(() => {
+
+	    	if ( localStorage.saleProduct ) {
+	    		alert( localStorage.saleProduct )
+
+		    	$.ajax({
+		    		url: this.loginurl,
+		    		method: 'GET',
+		    		dataType: 'json',
+		    		data: null,
+		    		success: (( data ) => {
+		    			this.setState({
+		    				attr: value
+		    			})
+		    		})
+		    	}.bind( this ))
+
+	    		delete localStorage.saleProduct 
+	    		delete localStorage.pid 
+	    	}
+
+	    	if ( localStorage.promo ) {
+	    		alert( localStorage.promo )
+
+	    		delete localStorage.promo 
+	    		delete localStorage.pid 
+	    	}
+
+	    	window.location.href = '/#/profile'
 	    })
 	}
 

@@ -33,7 +33,9 @@ class SideProduct extends Component {
 		this.findProductById( this.props.data )
 	}
 
-	signInPromo () {
+	signInPromo ( e ) {
+
+		e.preventDefault()
 
 		// Woopra: track sale event funnel
 
@@ -43,7 +45,7 @@ class SideProduct extends Component {
 		window.location.href = '/#/login'
 	}
 
-	simulateSale () {
+	simulateSale ( e ) {
 		// Woopra: track sale event 
 		Materialize.toast( 'Congratulations, the file will be to download in a few seconds', 3000 )
 	}
@@ -52,7 +54,9 @@ class SideProduct extends Component {
 		// Woopra: track share event
 	}
 
-	saveState () {
+	saleProduct ( e ) {
+
+		e.preventDefault()
 		// Save state for the order
 
 		localStorage.saleProduct = true
@@ -69,12 +73,12 @@ class SideProduct extends Component {
 	      			<article>
 	      				<h5><strong style={{ fontWeight: 700 }}>Price: ${ this.state.product ? this.state.product.price : null } USD</strong></h5>
 	      				
-	      				<a className="btn waves-effect waves-light green darken-2" onClick={this.saveState.bind(this)}>Buy course</a>
+	      				<a className="btn waves-effect waves-light green darken-2" onClick={ this.saleProduct.bind( this ) }>Buy course</a>
 	      				<p>
 	      					Buy and save into my personal library.
 	      				</p>
 
-	      				<a href="/assets/images/dweb.jpg" download className="btn waves-effect waves-light green" onClick={this.simulateSale.bind( this )}>Buy & download</a>
+	      				<a href="/assets/images/dweb.jpg" download className="btn waves-effect waves-light green" onClick={ this.simulateSale.bind( this ) }>Buy & download</a>
 	      				<p>
 	      					Buy and download directly. (without login or signup) 
 	      				</p>
