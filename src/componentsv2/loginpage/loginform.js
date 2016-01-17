@@ -82,11 +82,11 @@ class LoginForm extends Component {
 
 	render () {
 		return (
-			<div className="col x12 m6 l3" id="login-form">
+			<div id="login-form">
                 <div className="row center-align">
                     <form className="col s12 m12 l12" onSubmit={this.handleSubmit.bind(this)}>
                         <div className="row">
-                            <h5>User Registration Process</h5>
+                            <h3>User Registration Process</h3>
                         </div>
                         <div className="row">
                             <div className="input-field col s12 m12 l12">

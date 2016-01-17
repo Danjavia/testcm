@@ -21,7 +21,6 @@ class SinglePage extends Component {
 	      	method: 'GET',
 	      	dataType: 'json',
 	      	success: (( data ) => {
-	      		console.log( data )
 
 				this.setState({
 					product: data
@@ -41,8 +40,12 @@ class SinglePage extends Component {
 				<div className="container single">
 					<h1 className="single__name">{ this.state.product ? this.state.product.name : null }</h1>
 					<img src={this.state.product ? this.state.product.image : null} alt="placeholder+image" className="single__image" />
+					<h3>Description</h3>
+					<p>
+						{ this.state.product ? this.state.product.description : null }
+					</p>
 	            </div>
-			    <SideProduct data={ this.state.product ? this.state.product : null } />
+			    <SideProduct data={ this.props.params.productId } />
 			</div>
         )
 	}

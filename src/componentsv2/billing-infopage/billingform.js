@@ -50,7 +50,7 @@ class BillingForm extends Component {
 
 	render() {
 		return (
-			<div className="col x12 m6 l3" id="billing-form">
+			<div id="billing-form">
                 <div className="row center-align">
                     <form className="col s12 m12 l12" onSubmit={this.registerUser.bind(this)}>
                         <div className="row">

@@ -25,7 +25,6 @@ class Products extends Component {
 	      	method: 'GET',
 	      	dataType: 'json',
 	      	success: (( data ) => {
-	      		console.log( data )
 
 				this.setState({
 					products: data
