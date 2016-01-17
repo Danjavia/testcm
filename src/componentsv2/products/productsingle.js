@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react'
 
 // Include Components
 import Navbar from '../navbar'
+import Footer from '../footer'
 
 class Products extends Component {
 
@@ -11,6 +12,7 @@ class Products extends Component {
 	    	<div>
 			    <Navbar />
 		        {this.props.children}
+			    <Footer />
 	    	</div>
 	    );
 	}

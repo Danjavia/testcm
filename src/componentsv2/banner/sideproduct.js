@@ -64,7 +64,7 @@ class SideProduct extends Component {
 	      				<br/>
 	      				<a href={`http://www.twitter.com/share?url=http://localhost:3000/product/${ this.state.product ? this.state.product.id : null }` } className="btn waves-effect waves-light red" onClick={ this.trackShare.bind( this ) }>Share</a>
 	      				<p>Register now and get this course only for $10 USD.</p>
-	      				<a className="btn waves-effect waves-light" onClick={this.signInPromo.bind( this )}>Get offer now</a>
+	      				<a className="btn waves-effect waves-light blue" onClick={this.signInPromo.bind( this )}>Get offer now</a>
 	      				<ActionsPanel />
 	      			</article>
 				</div>

@@ -4,6 +4,7 @@ import React, { PropTypes, Component } from 'react'
 import Navbar from '../navbar'
 import Product from '../product/product'
 import Sidebanner from '../banner/sidebanner'
+import Footer from '../footer'
 
 class Products extends Component {
 
@@ -55,6 +56,7 @@ class Products extends Component {
 			      	</div>
 			      	<Sidebanner />
 			    </div>
+			    <Footer />
 	    	</div>
 	    );
 	}
