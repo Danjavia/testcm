@@ -23,17 +23,27 @@ class ProfilePage extends Component {
 	}
 
 	componentDidMount () {
-		setInterval(() => {
+
+		$.ajax({
+			url: this.userDataurl + localStorage.sid,
+			method: 'GET',
+			dataType: 'json',
+			success: (( data ) => {
+				this.setState({
+					user: data
+				})
+			})
+		})
+
+		setTimeout(() => {
 			$.ajax({
 				url: this.userDataurl + localStorage.sid,
 				method: 'GET',
 				dataType: 'json',
 				success: (( data ) => {
-					if ( this.isMounted() ) {
-						this.setState({
-							user: data
-						})
-					}
+					this.setState({
+						user: data
+					})
 				})
 			})
 		}, 2000 )
