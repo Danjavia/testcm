@@ -14,6 +14,7 @@ class BillingForm extends Component {
 
 		this.loginurl = 'http://localhost:1337/login'
 		this.registerurl = 'http://localhost:1337/register'
+        this.attachurl = 'http://localhost:1337/attach'
 	}
 
     componentDidMount () {
@@ -67,7 +68,38 @@ class BillingForm extends Component {
                     window.location.href = '/#/profile' 
                 }, 3000 )
 	      	})
-	    })
+	    }).done(( data ) => {
+
+            if ( data.code ) return
+
+            if ( localStorage.saleProduct ) {
+                alert( localStorage.saleProduct )
+
+                // $.ajax({
+                //  url: this.loginurl,
+                //  method: 'GET',
+                //  dataType: 'json',
+                //  data: null,
+                //  success: (( data ) => {
+                //      this.setState({
+                //          attr: value
+                //      })
+                //  })
+                // }.bind( this ))
+
+                delete localStorage.saleProduct 
+                delete localStorage.pid 
+            }
+
+            if ( localStorage.promo ) {
+                alert( localStorage.promo )
+
+                delete localStorage.promo 
+                delete localStorage.pid 
+            }
+
+            window.location.href = '/#/profile'
+        })
 	}
 
 	render() {

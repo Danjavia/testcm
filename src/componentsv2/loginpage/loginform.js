@@ -44,31 +44,50 @@ class LoginForm extends Component {
 				})
 
 	      	})
-	    }).done(() => {
+	    }).done(( data ) => {
+
+	    	if ( data.code ) return
 
 	    	if ( localStorage.saleProduct ) {
-	    		alert( localStorage.saleProduct )
+
+	    		// create relation data
+	    		let attachedData = {
+	    			userId: data.id,
+	    			productId: localStorage.pid
+	    		}
 
 		    	$.ajax({
-		    		url: this.loginurl,
-		    		method: 'GET',
+		    		url: this.attachurl,
+		    		method: 'POST',
 		    		dataType: 'json',
-		    		data: null,
+		    		data: attachedData,
 		    		success: (( data ) => {
-		    			this.setState({
-		    				attr: value
-		    			})
+		    			Materialize.toast( data.data, 1500 )
 		    		})
-		    	}.bind( this ))
+		    	})
 
 	    		delete localStorage.saleProduct 
 	    		delete localStorage.pid 
 	    	}
 
 	    	if ( localStorage.promo ) {
-	    		alert( localStorage.promo )
+	    		// create relation data
+	    		let attachedData = {
+	    			userId: data.id,
+	    			productId: localStorage.pid
+	    		}
 
-	    		delete localStorage.promo 
+		    	$.ajax({
+		    		url: this.attachurl,
+		    		method: 'POST',
+		    		dataType: 'json',
+		    		data: attachedData,
+		    		success: (( data ) => {
+		    			Materialize.toast( data.data, 1500 )
+		    		})
+		    	})
+
+	    		delete localStorage.saleProduct 
 	    		delete localStorage.pid 
 	    	}
 
