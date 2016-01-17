@@ -15,6 +15,8 @@ import ProductSingle from './componentsv2/products/productsingle'
 import SinglePage from './componentsv2/singlepage/singlepage'
 import LoginPage from './componentsv2/loginpage/loginpage'
 import BillingInfoPage from './componentsv2/billing-infopage/billing-infopage'
+import AdminPage from './componentsv2/adminpage/adminpage'
+import ProfilePage from './componentsv2/profilepage/profilepage'
 
 
 // Root component
@@ -31,6 +33,8 @@ export default class Root extends Component {
           <Route path="products" component={ProductSingle}>
             <Route path="/product/:productId" component={SinglePage}/>
           </Route>
+          <Route path='enceladus' component={AdminPage} />
+          <Route path='profile' component={ProfilePage} />
           <Route path='*' component={NFound} />
         </Route>
       </Router>

@@ -52,6 +52,15 @@ class SideProduct extends Component {
 		// Woopra: track share event
 	}
 
+	saveState () {
+		// Save state for the order
+
+		localStorage.saleProduct = true
+		localStorage.pid = this.props.data
+
+		window.location.href = '/#/login'
+	}
+
 	render() {
 		return (
 			<aside className="aside">
@@ -60,7 +69,7 @@ class SideProduct extends Component {
 	      			<article>
 	      				<h5><strong style={{ fontWeight: 700 }}>Price: ${ this.state.product ? this.state.product.price : null } USD</strong></h5>
 	      				
-	      				<a href="/#/login" className="btn waves-effect waves-light green darken-2">Buy course</a>
+	      				<a className="btn waves-effect waves-light green darken-2" onClick={this.saveState.bind(this)}>Buy course</a>
 	      				<p>
 	      					Buy and save into my personal library.
 	      				</p>
