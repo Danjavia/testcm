@@ -70,11 +70,10 @@ class LoginForm extends Component {
 	      			return
 	      		}
 
-				this.setState({
-					signup: true,
-					user: data
-				})
+				// Save state of user register process
+				localStorage.loginProcess = JSON.stringify( userInfo )
 
+				// jump to next step
 				window.location.href = '/#/billing-info'
 	      	})
 	    })

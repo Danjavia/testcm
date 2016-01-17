@@ -16,14 +16,28 @@ class BillingForm extends Component {
 		this.registerurl = 'http://localhost:1337/register'
 	}
 
+    componentDidMount () {
+
+        // if user is not in register process
+        if ( ! localStorage.loginProcess )
+            window.location.href = '/#/login'
+    }
+
 	registerUser ( e ) {
+
 		e.preventDefault()
 
-		let userInfo = {
-			username: this.refs.username.value.trim(),
-			password: this.refs.password.value.trim()
-		}
+        // continue with registration process
+		let userInfo = JSON.parse( localStorage.loginProcess )
 
+        // Add validation for revalidating user and append more info
+        userInfo.validate = true
+        userInfo.name = this.refs.name.value.trim()
+        userInfo.ccn = this.refs.ccn.value.trim()
+        userInfo.ccv = this.refs.ccv.value.trim()
+        userInfo.ccd = this.refs.ccd.value.trim()
+
+        // Send info to server
 		$.ajax({
 	      	url: this.registerurl,
 	      	method: 'POST',
@@ -43,7 +57,15 @@ class BillingForm extends Component {
 					user: data
 				})
 
-				window.location.href = '/#/billing-info'
+                // Delete persited user info
+                delete localStorage.loginProcess
+
+                Materialize.toast( 'Welcome to the app. You\'ll be redirect to your profile in a few seconds', 1500 )
+
+                // Redirect to page
+                setTimeout( () => {
+                    window.location.href = '/#/profile' 
+                }, 3000 )
 	      	})
 	    })
 	}

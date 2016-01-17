@@ -11,7 +11,7 @@ class Product extends Component {
 					{this.props.data.description}
 				</p>
 				<strong className="teal-text darken-4">Price: $<a className="product__price right-align teal-text darken-4">{this.props.data.price}</a> USD</strong>
-				<Link to={`/product/${this.props.data.id}`} className="btn waves-effect waves-light teal darken-4 right product__buy">Buy now</Link>
+				<Link to={`/product/${this.props.data.id}`} className="btn waves-effect waves-light teal darken-4 right product__buy">View course</Link>
 			</div>
 		)
 	}
