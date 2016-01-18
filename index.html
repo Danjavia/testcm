@@ -12,8 +12,11 @@
     })("woopra");
 
     woopra.config({
-        domain: 'wooprapp.danjavia.xyz'
+        domain: 'wooprapp.danjavia.xyz',
+        download_tracking: true,
+        ping_interval: 10000
     });
+
     woopra.track();
     </script>
     <!-- End of Woopra Code -->

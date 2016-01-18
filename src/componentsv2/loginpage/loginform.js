@@ -45,6 +45,21 @@ class LoginForm extends Component {
 				localStorage.signed = true
                 localStorage.sid = this.state.user.id
 
+                // Identify customer
+				woopra.identify({
+				    email: data.billing_info.email,
+				    name: data.billing_info.name,
+				    username: data.username,
+				    avatar: data.avatar
+				});
+                 
+                // track
+                woopra.track( 'Signin', {
+                    company: 'Woopra Test',
+                    username: data.username,
+                    plan: "Free"
+                });
+
 	      	})
 	    }).done(( data ) => {
 
@@ -58,6 +73,8 @@ class LoginForm extends Component {
 	    			productId: localStorage.pid
 	    		}
 
+	    		let singleProduct = JSON.parse( localStorage.p ) 
+
 		    	$.ajax({
 		    		url: this.attachurl,
 		    		method: 'POST',
@@ -68,8 +85,24 @@ class LoginForm extends Component {
 		    		})
 		    	})
 
+                // Identify customer
+				woopra.identify({
+				    email: data.billing_info.email,
+				    name: data.billing_info.name,
+				    username: data.username,
+				    avatar: data.avatar
+				});
+                 
+                // track
+                woopra.track( 'Payment', {
+                    course: singleProduct.name,
+                    username: data.username,
+                    amount: singleProduct.price
+                });
+
 	    		delete localStorage.saleProduct 
 	    		delete localStorage.pid 
+	    		delete localStorage.p 
 	    	}
 
 	    	if ( localStorage.promo ) {

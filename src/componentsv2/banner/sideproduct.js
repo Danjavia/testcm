@@ -23,6 +23,8 @@ class SideProduct extends Component {
 	      	dataType: 'json',
 	      	success: (( data ) => {
 
+	      		localStorage.p = JSON.stringify( data )
+
 				this.setState({
 					product: data
 				})

@@ -66,6 +66,21 @@ class BillingForm extends Component {
 
                 Materialize.toast( 'Welcome to the app. You\'ll be redirect to your profile in a few seconds', 1500 )
 
+                // Identify customer
+                woopra.identify({
+                    email: data.billing_info.email,
+                    name: data.billing_info.name,
+                    username: data.username,
+                    avatar: data.avatar
+                });
+                 
+                // track
+                woopra.track( 'signup', {
+                    company: 'Woopra Test',
+                    username: data.username,
+                    plan: "Free"
+                });
+
                 // Redirect to page
                 setTimeout( () => {
                     window.location.href = '/#/profile' 
