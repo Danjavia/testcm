@@ -81,6 +81,8 @@ class LoginForm extends Component {
 	    		let singleProduct = JSON.parse( localStorage.p )
 	    	} 
 
+	    	console.log( singleProduct );
+
 	    	if ( localStorage.saleProduct ) {
 
 	    		// create relation data
