@@ -57,6 +57,9 @@ class Navbar extends React.Component {
 		
 		e.preventDefault()
 
+        // track
+        woopra.track( 'Login button' );
+
 		delete localStorage.saleProduct
 		delete localStorage.promo
 		delete localStorage.pid
