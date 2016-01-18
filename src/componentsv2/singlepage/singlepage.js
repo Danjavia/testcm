@@ -34,12 +34,12 @@ class SinglePage extends Component {
 
 	componentDidMount () {
 
-        // track
-        woopra.track( `/product/${this.props.params.productId}`, {
-        	product: this.listedProduct
-        });
-
 		this.findProductById( this.props.params.productId )
+
+        // track
+        woopra.track( '/product', {
+        	productId: this.props.params.productId
+        });
 	}
 
 	render() {

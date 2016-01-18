@@ -10,8 +10,8 @@ class Sidebanner extends Component {
 			<div className="banner white-text">
 				<div className="ads">
 					<h5>Advertising</h5>
-					{ ! localStorage.signed ? <Ad image="assets/images/Android.jpg"/> : null }
-					<Ad image="assets/images/swift.jpg" link="http://localhost:3000/#/product/569bea3cb448a9d012719342" text="Get this Course from $10 USD"/>
+					{ ! localStorage.signed ? <Ad image="assets/images/Android.jpg" banner="Android promo" /> : null }
+					<Ad image="assets/images/swift.jpg" banner="Promo 10usd" link="http://localhost:3000/#/product/569bea3cb448a9d012719342" text="Get this Course from $10 USD" />
 				</div>
 	      	</div>
         )
