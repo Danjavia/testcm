@@ -20,6 +20,8 @@ class Navbar extends React.Component {
 
 		delete localStorage.sid
 		delete localStorage.signed
+		delete localStorage.u
+		delete localStorage.p
 
 		window.location.href = '/'
 	}
@@ -31,6 +33,7 @@ class Navbar extends React.Component {
 		delete localStorage.saleProduct
 		delete localStorage.promo
 		delete localStorage.pid
+		delete localStorage.p
 
 		window.location.href = '/'
 	}
@@ -42,6 +45,7 @@ class Navbar extends React.Component {
 		delete localStorage.saleProduct
 		delete localStorage.promo
 		delete localStorage.pid
+		delete localStorage.p
 
 		window.location.href = '/#login'
 	}

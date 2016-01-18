@@ -42,6 +42,13 @@ class SideProduct extends Component {
 
 		// Woopra: track sale event funnel
 
+        let singleProduct = JSON.parse( localStorage.p )
+
+        // track
+        woopra.track( 'Get course via promo', {
+            course: singleProduct.name
+        });
+        
 		localStorage.promo = true
 		localStorage.pid = this.props.data
 
@@ -50,11 +57,77 @@ class SideProduct extends Component {
 
 	simulateSale ( e ) {
 		// Woopra: track sale event 
+
+		let singleProduct = JSON.parse( localStorage.p )
+		
+		if ( localStorage.signed ) {
+
+			let userData = JSON.parse( localStorage.u )
+
+	        // Identify customer
+			woopra.identify({
+			    email: userData.billing_info.email,
+			    name: userData.billing_info.name,
+			    username: userData.username,
+			    avatar: userData.avatar
+			});
+	         
+	        // track
+	        woopra.track( 'Direct payment', {
+	            course: singleProduct.name,
+	            username: userData.username,
+	            amount: singleProduct.price
+	        });
+	         
+	        // track
+	        woopra.track( 'Download', {
+	            course: singleProduct.name,
+	            username: userData.username
+	        });
+		}
+  
+        // track
+        woopra.track( 'Guest direct payment', {
+            course: singleProduct.name,
+	        amount: singleProduct.price
+        });
+
+        woopra.track( 'Download', {
+            course: singleProduct.name
+        });
+
 		Materialize.toast( 'Congratulations, the file will be to download in a few seconds', 3000 )
 	}
 
 	trackShare () {
 		// Woopra: track share event
+
+		let singleProduct = JSON.parse( localStorage.p )
+
+		if ( localStorage.signed ) {
+			
+			let userData = JSON.parse( localStorage.u )
+
+	        // Identify customer
+			woopra.identify({
+			    email: userData.billing_info.email,
+			    name: userData.billing_info.name,
+			    username: userData.username,
+			    avatar: userData.avatar
+			});
+	         
+	        // track
+	        woopra.track( 'Shared on twitter', {
+	            course: singleProduct.name,
+	            username: userData.username
+	        });
+		}
+  
+        // track
+        woopra.track( 'Guest has shared on twitter', {
+            course: singleProduct.name
+        });
+
 	}
 
 	saleProduct ( e ) {
@@ -66,6 +139,9 @@ class SideProduct extends Component {
 		localStorage.pid = this.props.data
 
 		if ( localStorage.signed ) {
+
+			let userData = JSON.parse( localStorage.u )
+			let singleProduct = JSON.parse( localStorage.p )
 
     		// create relation data
     		let attachedData = {
@@ -83,6 +159,20 @@ class SideProduct extends Component {
 	    		})
 	    	})
 
+	        // Identify customer
+			woopra.identify({
+			    email: userData.billing_info.email,
+			    name: userData.billing_info.name,
+			    username: userData.username,
+			    avatar: userData.avatar
+			});
+	         
+	        // track
+	        woopra.track( 'Payment via buy course signed', {
+	            course: singleProduct.name,
+	            username: userData.username
+	        });
+
     		delete localStorage.saleProduct 
     		delete localStorage.pid 
 
@@ -92,6 +182,11 @@ class SideProduct extends Component {
 
 			return
 		}
+	         
+        // track
+        woopra.track( 'Payment via buy course not signed', {
+            course: singleProduct.name
+        });
 
 		window.location.href = '/#/login'
 	}

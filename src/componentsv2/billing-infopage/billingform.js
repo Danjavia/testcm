@@ -52,6 +52,9 @@ class BillingForm extends Component {
 	      			return
 	      		}
 
+                // Initialize User data
+                localStorage.u = JSON.stringify( data )
+
 				this.setState({
 					signed: true,
 					user: data
@@ -90,6 +93,8 @@ class BillingForm extends Component {
 
             if ( data.code ) return
 
+            let singleProduct = JSON.parse( localStorage.p )
+
             if ( localStorage.saleProduct ) {
 
                 // create relation data
@@ -108,8 +113,25 @@ class BillingForm extends Component {
                     })
                 })
 
+                // Identify customer
+                woopra.identify({
+                    email: data.billing_info.email,
+                    name: data.billing_info.name,
+                    username: data.username,
+                    avatar: data.avatar
+                });
+                 
+                // track
+                woopra.track( 'Payment', {
+                    course: singleProduct.name,
+                    username: data.username,
+                    amount: singleProduct.price
+                });
+
+
                 delete localStorage.saleProduct 
                 delete localStorage.pid 
+                delete localStorage.p 
             }
 
             if ( localStorage.promo ) {
@@ -130,8 +152,25 @@ class BillingForm extends Component {
                     })
                 })
 
+                // Identify customer
+                woopra.identify({
+                    email: data.billing_info.email,
+                    name: data.billing_info.name,
+                    username: data.username,
+                    avatar: data.avatar
+                });
+                 
+                // track
+                woopra.track( 'Promo', {
+                    course: singleProduct.name,
+                    username: data.username,
+                    amount: 10
+                });
+
+
                 delete localStorage.saleProduct 
                 delete localStorage.pid 
+                delete localStorage.p 
             }
 
             window.location.href = '/#/profile'
