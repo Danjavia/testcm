@@ -17,7 +17,7 @@ class Product extends Component {
 
 		if ( localStorage.signed ) {
 
-			let userData = localStorage.u
+			let userData = JSON.parse( localStorage.u )
 
 			// Identify customer
 			woopra.identify({
@@ -52,7 +52,7 @@ class Product extends Component {
 
 		if ( localStorage.signed ) {
 
-			let userData = localStorage.u
+			let userData = JSON.parse( localStorage.u )
 
 			// Identify customer
 			woopra.identify({

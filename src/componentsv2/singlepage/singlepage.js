@@ -12,6 +12,7 @@ class SinglePage extends Component {
 
 		this.state = {}
 	    this.producturl = 'http://localhost:1337/products/'
+	    this.listedProduct = ''
 	}
 
 	findProductById ( id ) {
@@ -22,6 +23,8 @@ class SinglePage extends Component {
 	      	dataType: 'json',
 	      	success: (( data ) => {
 
+	      		this.listedProduct = data.name
+
 				this.setState({
 					product: data
 				})
@@ -30,6 +33,12 @@ class SinglePage extends Component {
 	}
 
 	componentDidMount () {
+
+        // track
+        woopra.track( `/product/${this.props.params.productId}`, {
+        	product: this.listedProduct
+        });
+
 		this.findProductById( this.props.params.productId )
 	}
 

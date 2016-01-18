@@ -7,6 +7,12 @@ import Footer from '../footer'
 
 class LoginPage extends Component {
 
+	componentDidMount () {
+
+        // track
+        woopra.track( '/login' );
+	}
+
 	render() {
 		return (
 			<div>

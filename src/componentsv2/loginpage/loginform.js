@@ -68,7 +68,9 @@ class LoginForm extends Component {
 
 	    	if ( data.code ) return
 
-	    	let singleProduct = JSON.parse( localStorage.p )
+	    	if ( localStorage.saleProduct || localStorage.promo ) {
+	    		let singleProduct = JSON.parse( localStorage.p )
+	    	} 
 
 	    	if ( localStorage.saleProduct ) {
 

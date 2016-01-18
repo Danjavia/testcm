@@ -17,6 +17,9 @@ class ProfilePage extends Component {
 
 	componentWillMount () {
 
+        // track
+        woopra.track( '/billing-info' );
+
         // if user is not logged
         if ( ! localStorage.signed )
             window.location.href = '/#/login'

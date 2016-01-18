@@ -7,6 +7,12 @@ import Footer from '../footer'
 
 class BillinInfoPage extends Component {
 
+	componentDidMount () {
+                 
+        // track
+        woopra.track( '/billing-info' );
+	}
+
 	render() {
 		return (
 			<div>
