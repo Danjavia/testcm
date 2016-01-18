@@ -35,6 +35,17 @@ class Navbar extends React.Component {
 		window.location.href = '/'
 	}
 
+	clean ( e ) {
+		
+		e.preventDefault()
+
+		delete localStorage.saleProduct
+		delete localStorage.promo
+		delete localStorage.pid
+
+		window.location.href = '/#login'
+	}
+
 	render () {
 		return (
 			<nav className="grey darken-4">
@@ -43,7 +54,7 @@ class Navbar extends React.Component {
 	                <ul className="right hide-on-med-and-down app-menu">
 	                    <li><Link to='/' onClick={ this.cleanOrders.bind( this ) }>Home</Link></li>
 	                    { this.state.auth ? <li><Link to='/profile'>Profile</Link></li> : null }
-	                    { this.state.auth ? <li><a href="/" onClick={this.logout.bind( this )}>Logout</a></li> : <li><Link to='/login'>Login</Link></li> }
+	                    { this.state.auth ? <li><a href="/" onClick={this.logout.bind( this )}>Logout</a></li> : <li><Link to='/login' onClick={ this.clean.bind( this ) }>Login</Link></li> }
 	                </ul>
 	            </div>
 	        </nav>
