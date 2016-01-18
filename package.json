@@ -24,6 +24,7 @@
     "lodash": "^4.0.0",
     "node-notifier": "^4.2.1",
     "react": "^0.14.3",
+    "react-cookie": "^0.4.3",
     "react-dom": "^0.14.3",
     "react-router": "^2.0.0-rc4",
     "reactfire": "^0.5.1",

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
+import cookie from 'react-cookie';
 
 // Home component
 class Navbar extends React.Component {
@@ -32,6 +33,8 @@ class Navbar extends React.Component {
         woopra.track( 'Sign out', {
             username: userData.username
         });
+    
+    	cookie.remove( 'wooTracker' );
 
 		delete localStorage.sid
 		delete localStorage.signed
