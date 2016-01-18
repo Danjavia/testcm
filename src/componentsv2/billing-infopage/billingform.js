@@ -52,42 +52,51 @@ class BillingForm extends Component {
 	      			return
 	      		}
 
-                // Initialize User data
-                localStorage.u = JSON.stringify( data )
+                trackJs.configure({ userId: data.billing_info.email })
 
-				this.setState({
-					signed: true,
-					user: data
-				})
+                try {
 
-                // Delete persited user info
-                delete localStorage.loginProcess
+                    // Initialize User data
+                    localStorage.u = JSON.stringify( data )
 
-                // set user as signed
-                localStorage.signed = true
-                localStorage.sid = this.state.user.id
+    				this.setState({
+    					signed: true,
+    					user: data
+    				})
 
-                Materialize.toast( 'Welcome to the app. You\'ll be redirect to your profile in a few seconds', 1500 )
+                    // Delete persited user info
+                    delete localStorage.loginProcess
 
-                // Identify customer
-                woopra.identify({
-                    email: data.billing_info.email,
-                    name: data.billing_info.name,
-                    username: data.username,
-                    avatar: data.avatar
-                });
-                 
-                // track
-                woopra.track( 'User signup', {
-                    company: 'Woopra Test',
-                    username: data.username,
-                    plan: "Free"
-                });
+                    // set user as signed
+                    localStorage.signed = true
+                    localStorage.sid = this.state.user.id
 
-                // Redirect to page
-                setTimeout( () => {
-                    window.location.href = '/#/profile' 
-                }, 3000 )
+                    Materialize.toast( 'Welcome to the app. You\'ll be redirect to your profile in a few seconds', 1500 )
+
+                    // Identify customer
+                    woopra.identify({
+                        email: data.billing_info.email,
+                        name: data.billing_info.name,
+                        username: data.username,
+                        avatar: data.avatar
+                    });
+                     
+                    // track
+                    woopra.track( 'User signup', {
+                        company: 'Woopra Test',
+                        username: data.username,
+                        plan: "Free"
+                    });
+
+                    // Redirect to page
+                    setTimeout( () => {
+                        window.location.href = '/#/profile' 
+                    }, 3000 )
+
+                } catch( e ) {
+                    // statements
+                    trackJs.track( e );
+                }
 	      	})
 	    }).done(( data ) => {
 

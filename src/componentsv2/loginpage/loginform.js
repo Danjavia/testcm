@@ -32,36 +32,45 @@ class LoginForm extends Component {
 	      	dataType: 'json',
 	      	success: (( data ) => {
 
-	      		if ( data.code ) {
+      			if ( data.code ) {
 	      			Materialize.toast( data.error, 1500 )
 	      			return
 	      		}
 
-	      		// Initialize User data
-	      		localStorage.u = JSON.stringify( data )
+	      		trackJs.configure({ userId: data.billing_info.email })
 
-				this.setState({
-					signed: true,
-					user: data
-				})
+	      		try {
 
-				localStorage.signed = true
-                localStorage.sid = this.state.user.id
+		      		// Initialize User data
+		      		localStorage.u = JSON.stringify( data )
 
-                // Identify customer
-				woopra.identify({
-				    email: data.billing_info.email,
-				    name: data.billing_info.name,
-				    username: data.username,
-				    avatar: data.avatar
-				});
-                 
-                // track
-                woopra.track( 'Signin', {
-                    company: 'Woopra Test',
-                    username: data.username,
-                    plan: "Free"
-                });
+					this.setState({
+						signed: true,
+						user: data
+					})
+
+					localStorage.signed = true
+	                localStorage.sid = this.state.user.id
+
+	                // Identify customer
+					woopra.identify({
+					    email: data.billing_info.email,
+					    name: data.billing_info.name,
+					    username: data.username,
+					    avatar: data.avatar
+					});
+	                 
+	                // track
+	                woopra.track( 'Signin', {
+	                    company: 'Woopra Test',
+	                    username: data.username,
+	                    plan: "Free"
+	                });
+
+	      		} catch( e ) {
+	      			// statements
+	      			trackJs.track( e );
+	      		}
 
 	      	})
 	    }).done(( data ) => {
