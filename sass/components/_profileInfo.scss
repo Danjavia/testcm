@@ -1,0 +1,53 @@
+.profileInfo {
+	background: $dashboardBg;
+	width: 100%;
+	padding: 40px 0 50px;
+	box-sizing: border-box;
+
+	&__data {
+		margin-left: 40px;
+	    display: inline-block;
+	    position: relative;
+	    top: -15px;
+	}
+
+	h2 {
+		
+	}
+
+	h3 {
+		
+	}
+
+	h5 {
+
+	}
+
+	img {
+		background: white;
+		width: 150px;
+		height: 150px;
+		object-fit: cover;
+		border-radius: 50%;
+		padding: 5px;
+	}
+
+	strong {
+
+	}
+
+	.clearfix {
+		visibility: hidden;
+	    display: block;
+	    font-size: 0;
+	    content: " ";
+	    clear: both;
+	    height: 0;
+		
+		&:after {
+			content: "";
+			clear: both;
+		}
+	}
+
+}

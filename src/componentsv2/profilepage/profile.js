@@ -15,21 +15,29 @@ class Profile extends Component {
 	render() {
 
 		return (
-			<div className="container">
-				<h2>User data</h2>
-				<h3>{ this.props.data ? this.props.data.billing_info.name : null }</h3>
-				<h5>{ this.props.data ? this.props.data.username : null }</h5>
-				<img src={ this.props.data ? this.props.data.avatar : null } alt="placeholder+image" />
-				<strong>{ this.props.data ? this.props.data.products.length : null } Courses in library</strong>
+			<section>
+				<section className="profileInfo white-text">
+					<div className="container">
+						<img src={ this.props.data ? this.props.data.avatar : null } alt="placeholder+image" className="left"/>
+						<div className="profileInfo__data">
+							<h3>{ this.props.data ? this.props.data.billing_info.name : null }</h3>
+							<h5>@{ this.props.data ? this.props.data.username : null }</h5>
+							<strong>{ this.props.data ? this.props.data.products.length : null } Courses in library</strong>
+							</div>
+						<div className="clearfix"></div>
+					</div>
+				</section>
 
-				<h4 className="teal-text darken-4" style={{ marginTop: '50px', marginBottom: '40px' }}>My courses</h4>
+				<section className="container">
+					<h4 className="teal-text darken-4" style={{ marginTop: '50px', marginBottom: '40px' }}>My courses</h4>
 
-		      	<div className="row products">
-		            { this.props.data ? this.props.data.products.map( ( product, i ) => (
-		              <ProductSingle data={product} key={i}/>
-		            )) : null }
-		      	</div>
-            </div>
+			      	<div className="row products">
+			            { this.props.data ? this.props.data.products.map( ( product, i ) => (
+			              <ProductSingle data={product} key={i}/>
+			            )) : null }
+			      	</div>
+	            </section>
+			</section>
         )
 	}
 }

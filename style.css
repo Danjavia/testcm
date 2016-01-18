@@ -76,6 +76,38 @@ body {
   font-family: 'Oxygen', sans-serif;
   font-size: 16px; }
 
+.profileInfo {
+  background: #0DA193;
+  width: 100%;
+  padding: 40px 0 50px;
+  box-sizing: border-box; }
+  .profileInfo__data {
+    margin-left: 40px;
+    display: inline-block;
+    position: relative;
+    top: -15px; }
+  .profileInfo img {
+    background: white;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 5px; }
+  .profileInfo .clearfix {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0; }
+    .profileInfo .clearfix:after {
+      content: "";
+      clear: both; }
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 16px; }
+
 .single {
   margin-bottom: 20px;
   width: 50% !important; }
