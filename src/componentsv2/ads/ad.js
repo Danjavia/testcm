@@ -28,7 +28,7 @@ class Ad extends Component {
 		return (
   			<article>
   				<a href={ this.props.link ? this.props.link : '/#/login' } onClick={ this.trackPromo.bind( this ) }><img src={this.props.image} alt="placeholder+image" /></a>
-  				<p>{ this.props.text ? this.props.text : 'Register now and get this course totally free.' }</p>
+  				<p>{ this.props.text ? this.props.text : 'Register now and get awesome offers.' }</p>
   			</article>
         )
 	}
