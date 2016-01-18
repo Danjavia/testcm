@@ -10,7 +10,7 @@ class LoginPage extends Component {
 	componentDidMount () {
 
         // track
-        woopra.track( '/login' );
+        woopra.track( 'login page loaded' );
 	}
 
 	render() {

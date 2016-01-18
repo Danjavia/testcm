@@ -37,7 +37,7 @@ class SinglePage extends Component {
 		this.findProductById( this.props.params.productId )
 
         // track
-        woopra.track( '/product', {
+        woopra.track( 'Single page loaded', {
         	productId: this.props.params.productId
         });
 	}

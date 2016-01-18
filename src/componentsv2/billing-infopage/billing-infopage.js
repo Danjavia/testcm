@@ -10,7 +10,7 @@ class BillinInfoPage extends Component {
 	componentDidMount () {
                  
         // track
-        woopra.track( '/billing-info' );
+        woopra.track( 'billing-info page loaded' );
 	}
 
 	render() {
