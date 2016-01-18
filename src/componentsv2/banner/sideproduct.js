@@ -137,11 +137,12 @@ class SideProduct extends Component {
 
 		localStorage.saleProduct = true
 		localStorage.pid = this.props.data
+			
+		let singleProduct = JSON.parse( localStorage.p )
 
 		if ( localStorage.signed ) {
 
 			let userData = JSON.parse( localStorage.u )
-			let singleProduct = JSON.parse( localStorage.p )
 
     		// create relation data
     		let attachedData = {

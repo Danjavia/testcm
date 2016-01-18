@@ -18,6 +18,21 @@ class Navbar extends React.Component {
 
 		e.preventDefault()
 
+		let userData = JSON.parse( localStorage.u )
+
+        // Identify customer
+		woopra.identify({
+		    email: userData.billing_info.email,
+		    name: userData.billing_info.name,
+		    username: userData.username,
+		    avatar: userData.avatar
+		});
+         
+        // track
+        woopra.track( 'Sign out', {
+            username: userData.username
+        });
+
 		delete localStorage.sid
 		delete localStorage.signed
 		delete localStorage.u

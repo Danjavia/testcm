@@ -3,9 +3,11 @@ import { Link } from 'react-router';
 
 class Product extends Component {
 
-	trackTitle () {
+	trackTitle ( e ) {
 
-		let singleProduct = localStorage.p
+		e.preventDefault()
+
+		let singleProduct = this.props.data
 
 		if ( localStorage.signed ) {
 
@@ -32,11 +34,15 @@ class Product extends Component {
         woopra.track( 'By title', {
             course: singleProduct.name
         });
+
+        window.location.href = `/#/product/${this.props.data.id}`
 	}
 
-	trackImage () {
+	trackImage ( e ) {
 
-		let singleProduct = localStorage.p
+		e.preventDefault()
+
+		let singleProduct = this.props.data
 
 		if ( localStorage.signed ) {
 
@@ -63,11 +69,15 @@ class Product extends Component {
         woopra.track( 'By image', {
             course: singleProduct.name
         });
+
+        window.location.href = `/#/product/${this.props.data.id}`
 	}
 
-	trackButton () {
+	trackButton ( e ) {
 
-		let singleProduct = localStorage.p
+		e.preventDefault()
+
+		let singleProduct = this.props.data
 
 		if ( localStorage.signed ) {
 
@@ -94,6 +104,8 @@ class Product extends Component {
         woopra.track( 'By button', {
             course: singleProduct.name
         });
+
+        window.location.href = `/#/product/${this.props.data.id}`
 	}
 
 	render() {
