@@ -34,6 +34,7 @@ class BillingForm extends Component {
         // Add validation for revalidating user and append more info
         userInfo.validate = true
         userInfo.name = this.refs.name.value.trim()
+        userInfo.email = this.refs.email.value.trim()
         userInfo.ccn = this.refs.ccn.value.trim()
         userInfo.ccv = this.refs.ccv.value.trim()
         userInfo.ccd = this.refs.ccd.value.trim()
@@ -135,6 +136,13 @@ class BillingForm extends Component {
                                 <i className="material-icons prefix">account_box</i>
                                 <input id="name" ref="name" type="text" className="validate" required/>
                                 <label htmlFor="name" data-error="Check ur name" data-success="right">Credit card name</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12 m12 l12">
+                                <i className="material-icons prefix">email</i>
+                                <input id="email" ref="email" type="email" className="validate" required/>
+                                <label htmlFor="email" data-error="Check ur email" data-success="right">Your email</label>
                             </div>
                         </div>
                         <div className="row">
