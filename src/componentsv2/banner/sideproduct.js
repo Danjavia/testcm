@@ -116,11 +116,11 @@ class SideProduct extends Component {
 	      				<p>
 	      					Share this course with your better friends. Also with your enemies <i className="material-icons prefix">thumb_up</i>
 	      				</p>
-
-	      				<a className="btn waves-effect waves-light blue" onClick={this.signInPromo.bind( this )}>Get offer now</a>
+	      				{ ! localStorage.signed ?
+	      				<div><a className="btn waves-effect waves-light blue" onClick={this.signInPromo.bind( this )}>Get offer now</a>
 	      				<p>
 	      					Register now and get this course only for $10 USD.
-	      				</p>
+	      				</p></div> : null }
 	      			</article>
 				</div>
 	      	</aside>
