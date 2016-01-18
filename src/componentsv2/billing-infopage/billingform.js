@@ -78,7 +78,7 @@ class BillingForm extends Component {
                 });
                  
                 // track
-                woopra.track( 'signup', {
+                woopra.track( 'User signup', {
                     company: 'Woopra Test',
                     username: data.username,
                     plan: "Free"

@@ -22,7 +22,7 @@ class ProfilePage extends Component {
             window.location.href = '/#/login'
 
         // track
-        woopra.track( 'profile page loaded' );
+        woopra.track( 'User profile page loaded' );
 	}
 
 	componentDidMount () {
