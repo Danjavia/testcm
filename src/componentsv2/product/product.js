@@ -33,7 +33,7 @@ class Product extends Component {
 	            username: userData.username
 	        });
 
-	        return
+	        window.location.href = `/#/product/${this.props.data.id}`
 		}
          
         // track
@@ -68,7 +68,7 @@ class Product extends Component {
 	            username: userData.username
 	        });
 
-	        return
+	        window.location.href = `/#/product/${this.props.data.id}`
 		}
          
         // track
@@ -89,8 +89,6 @@ class Product extends Component {
 
 			let userData = JSON.parse( localStorage.u )
 
-			console.log( userData )
-
 			// Identify customer
 			woopra.identify({
 			    email: userData.billing_info.email,
@@ -105,7 +103,7 @@ class Product extends Component {
 	            username: userData.username
 	        });
 
-	        return
+	        window.location.href = `/#/product/${this.props.data.id}`
 		}
          
         // track
