@@ -81,7 +81,7 @@ class LoginForm extends Component {
 	    		let singleProduct = JSON.parse( localStorage.p )
 	    	} 
 
-	    	console.log( singleProduct );
+	    	console.log( singleProduct )
 
 	    	if ( localStorage.saleProduct ) {
 
