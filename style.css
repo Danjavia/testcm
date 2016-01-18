@@ -1,0 +1,94 @@
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 16px; }
+
+#billing-form {
+  width: 40%;
+  margin: auto;
+  margin-top: 30px; }
+  #billing-form.into-modal {
+    width: 70%; }
+  #billing-form .action-button {
+    margin: 0 10px; }
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 16px; }
+
+.flex {
+  display: flex;
+  justify-content: space-between; }
+  .flex .products, .flex .single {
+    flex: 5; }
+  .flex .banner, .flex aside {
+    flex: 2;
+    margin-top: 65px;
+    margin-left: 30px; }
+    .flex .banner .ads, .flex aside .ads {
+      background: #2a2a2a;
+      box-sizing: border-box;
+      padding: 10px 10px 20px; }
+    .flex .banner img, .flex aside img {
+      width: 100%;
+      object-fit: cover;
+      background: #fefefe;
+      box-sizing: border-box;
+      padding: 3px; }
+  .flex aside {
+    margin-top: 20px; }
+
+#products {
+  margin-top: 50px; }
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.product {
+  margin-bottom: 20px;
+  width: 50% !important; }
+  .product__name {
+    font-size: 1.5em;
+    font-weight: 600; }
+  .product__image {
+    width: 100%;
+    background: #2a2a2a;
+    box-sizing: border-box;
+    padding: 2px; }
+  .product__buy {
+    top: -7px; }
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 16px; }
+
+#login-form {
+  width: 40%;
+  margin: auto;
+  margin-top: 30px; }
+  #login-form.into-modal {
+    width: 70%; }
+  #login-form .action-button {
+    margin: 0 10px; }
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 16px; }
+
+.single {
+  margin-bottom: 20px;
+  width: 50% !important; }
+  .single__name {
+    font-size: 2em;
+    font-weight: 600; }
+  .single__image {
+    width: 100%;
+    background: #2a2a2a;
+    box-sizing: border-box;
+    padding: 2px; }
+  .single__buy {
+    top: -7px; }
+  .single__actions h4 {
+    font-weight: 700; }
+

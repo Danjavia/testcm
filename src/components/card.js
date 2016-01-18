@@ -157,12 +157,6 @@ var CardActions = React.createClass({
             eventLabel: 'Download Image' + this.props.action.item
         });
 
-        window.Intercom( 'boot', {
-            app_id: "y36fm6q4"
-        });
- 
-        window.Intercom( 'update' );
-
     },
 
     render: function () {

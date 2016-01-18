@@ -3,6 +3,12 @@ import { Link } from 'react-router';
 
 class Product extends Component {
 
+	constructor ( props ) {
+		super ( props )
+
+		this.state = {}
+	} 
+
 	trackTitle ( e ) {
 
 		e.preventDefault()
@@ -81,7 +87,9 @@ class Product extends Component {
 
 		if ( localStorage.signed ) {
 
-			let userData = localStorage.u
+			let userData = JSON.parse( localStorage.u )
+
+			console.log( userData )
 
 			// Identify customer
 			woopra.identify({
