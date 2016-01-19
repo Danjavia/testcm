@@ -99,8 +99,10 @@ class SideProduct extends Component {
 		Materialize.toast( 'Congratulations, the file will be to download in a few seconds', 3000 )
 	}
 
-	trackShare () {
+	trackShare ( e ) {
 		// Woopra: track share event
+
+		e.preventDefault()
 
 		let singleProduct = JSON.parse( localStorage.p )
 
@@ -127,6 +129,8 @@ class SideProduct extends Component {
         woopra.track( 'Guest has shared on twitter', {
             course: singleProduct.name
         });
+
+        window.location.href = e.target.href
 
 	}
 
