@@ -17,6 +17,22 @@ class LoginForm extends Component {
 		this.attachurl = 'http://localhost:1337/attach'
 	}
 
+	// componentDidMount () {
+	// 	try {
+	// 		risk = 3 
+	// 	} catch ( e ) {
+	// 		// track
+ //            woopra.track( 'Error test', {
+ //                type: 'This is an error test',
+ //                error: e,
+ //                location: 'component: loginform.js, on location:' + location.href
+ //            });
+
+ //  			// statements
+ //  			trackJs.track( e );
+	// 	}
+	// }
+
 	handleSubmit ( e ) {
 		e.preventDefault()
 
