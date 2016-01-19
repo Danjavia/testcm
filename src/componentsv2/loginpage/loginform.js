@@ -77,11 +77,11 @@ class LoginForm extends Component {
 
 	    	if ( data.code ) return
 
-	    	if ( localStorage.saleProduct || localStorage.promo ) {
-	    		let singleProduct = JSON.parse( localStorage.p )
-	    	} 
+	    	let singleProduct = null
 
-	    	console.log( singleProduct )
+	    	if ( localStorage.saleProduct || localStorage.promo ) {
+	    		singleProduct = JSON.parse( localStorage.p )
+	    	} 
 
 	    	if ( localStorage.saleProduct ) {
 
