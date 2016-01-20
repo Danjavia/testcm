@@ -14,6 +14,8 @@ class AdminPage extends Component {
 	    let appID = 'SY60JOBTT1X4F5A6BB0D1U7ZD4DESCEU'
 	    let secretKey = 'bhYAr2D60MizKslHvh2kufDpg3JIw3nh1vX4Y9fDmhqWFUAH0hqLY4Ts3vDzhX6N'
 	    let chartData = {}
+	    let chartData2 = {}
+	    let chartData3 = {}
 
 	    // Pubnub initialize
 		let pubnub = PUBNUB.init({
@@ -87,7 +89,7 @@ class AdminPage extends Component {
 		  	}
 		})
 		
-
+		// donut chart
 		setInterval ( () => {
 			$.ajax({
 			    type: 'POST',
@@ -116,13 +118,13 @@ class AdminPage extends Component {
 			        let rows = data.rows
 
 			        $.each( data.rows, ( k, v ) => {
-			        	chartData[ v.i ] = v.cells[ 0 ] 
+			        	chartData2[ v.i ] = v.cells[ 0 ] 
 			        })
 
 					pubnub.publish({
 				      channel: 'c3-donut',
 				      message: {
-				        eon: chartData
+				        eon: chartData2
 				      }
 				    })
 
@@ -135,7 +137,7 @@ class AdminPage extends Component {
 		pubnub.publish({
 	      channel: 'c3-donut',
 	      message: {
-	        eon: chartData
+	        eon: chartData2
 	      }
 	    })
 		
@@ -151,41 +153,67 @@ class AdminPage extends Component {
 		    }
 		})
 
-
-		// Trackjs errors
-
 		setInterval ( () => {
 			$.ajax({
-			    type: 'GET',
-			    url: 'https://api.trackjs.com/052da5ad7afb467f8d4ee9800ab029a0/v1/errors',
+			    type: 'POST',
+			    url: 'https://www.woopra.com/rest/2.2/report',
 			    crossDomain: true,
 			    dataType: "json",
 			    jsonp: false,
 			    cache: false,
 			    beforeSend: function (xhr) {
-			        xhr.setRequestHeader( 'Authorization', 'c5498b9967c322c9231eda204f9cdc1');
+			        xhr.setRequestHeader( 'Authorization', 'Basic ' + btoa( appID + ':' + secretKey ));
 			    },
+
+			    data: {
+			        request: JSON.stringify({
+			            "website": site,
+			            "date_format": "MM/dd/yyyy",
+			            "start_day": "01/01/2016",
+			            "end_day": "01/22/2016",
+			            "limit": 5,
+			            "offset": 0,
+			            "report_id": "reports:schema:visitor:265713450",
+			        })
+			    },
+
 			    success: function ( data ) {
-			    	console.log( data, 'fruher' )
 
-
-			        // let rows = data.rows
-
-			        // $.each( rows, ( k, v ) => {
-			        // 	chartData[ v.i ] = v.cells[ 0 ] 
-			        // })
+			        $.each( data.rows, ( k, v ) => {
+			        	chartData3[ v.i ] = v.cells[ 2 ] 
+			        })
 
 			    }
 			});
 
-		  	// pubnub.publish({
-		  	//   	channel: channel,
-		  	//   	message: {
-		  	//   		eon: chartData
-		  	//   	}
-		  	// });
+		  	pubnub.publish({
+		  	  	channel: 'c3-chart-tech',
+		  	  	message: {
+		  	  		eon: chartData3
+		  	  	}
+		  	});
 
-		}, 1000 )
+		}, 2000 )
+		
+		eon.chart({
+		    pubnub: pubnub,
+			channel: 'c3-chart-tech',
+		  	generate: {
+		  	  	bindto: '#enceladus-dashboard-points',
+		  	  	data: {
+		  	  	  	labels: true,
+		  	  	  	type: 'bar'
+		  	  	},
+		  	  	bar: {
+		  	  	  	width: {
+		  	  	  	  	ratio: 0.5
+		  	  	  	}
+		  	  	},
+		  	  	tooltip: {
+		  	  	    show: false
+		  	  	}
+		  	}
+		})
 
 	}
 
@@ -204,9 +232,11 @@ class AdminPage extends Component {
 						<div id="enceladus-dashboard-pie"></div>
 					</article>
 					<article className="dashboard_entity" style={{ width: 500 }}>
-
+						<h4 className="center-align">Active users</h4>
+						<div id="enceladus-dashboard-points"></div>
 					</article>
 				</section>
+				<h3 className="center-align">Realtime actions tracking</h3>
 			</section>
         )
 	}
