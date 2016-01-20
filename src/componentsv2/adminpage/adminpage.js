@@ -223,15 +223,15 @@ class AdminPage extends Component {
 				<Navbar />
 				<h3 className="center-align">Dashboard</h3>
 				<section className="dashboard__properties">
-					<article className="dashboard_entity" style={{ width: 500 }}>
+					<article className="dashboard_entity" style={{ width: 340 }}>
 						<h4 className="center-align">Direct Sales</h4>
 						<div id="enceladus-dashboard-bar"></div>
 					</article>
-					<article className="dashboard_entity" style={{ width: 500 }}>
+					<article className="dashboard_entity" style={{ width: 340 }}>
 						<h4 className="center-align">Sales Percentage</h4>
 						<div id="enceladus-dashboard-pie"></div>
 					</article>
-					<article className="dashboard_entity" style={{ width: 500 }}>
+					<article className="dashboard_entity" style={{ width: 340 }}>
 						<h4 className="center-align">Active users</h4>
 						<div id="enceladus-dashboard-points"></div>
 					</article>

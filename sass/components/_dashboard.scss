@@ -2,7 +2,11 @@
 
 	&__properties {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
+		box-sizing: border-box;
+		padding: 20px;
+		width: 90%;
+		margin: auto;
 	}
 
 	&__entity {
