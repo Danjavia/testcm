@@ -41,7 +41,7 @@ class Navbar extends React.Component {
 		delete localStorage.u
 		delete localStorage.p
 
-		window.location.href = '/'
+		window.location.href = '/#/'
 	}
 
 	cleanOrders ( e ) {
@@ -53,7 +53,7 @@ class Navbar extends React.Component {
 		delete localStorage.pid
 		delete localStorage.p
 
-		window.location.href = '/'
+		window.location.href = '/#/'
 	}
 
 	clean ( e ) {
@@ -79,7 +79,7 @@ class Navbar extends React.Component {
 	                <ul className="right hide-on-med-and-down app-menu">
 	                    <li><Link to='/' onClick={ this.cleanOrders.bind( this ) }>Home</Link></li>
 	                    { this.state.auth ? <li><Link to='/profile'>Profile</Link></li> : null }
-	                    { this.state.auth ? <li><a href="/" onClick={this.logout.bind( this )}>Logout</a></li> : <li><Link to='/login' onClick={ this.clean.bind( this ) }>Login</Link></li> }
+	                    { this.state.auth ? <li><a href="/#/" onClick={this.logout.bind( this )}>Logout</a></li> : <li><Link to='/login' onClick={ this.clean.bind( this ) }>Login</Link></li> }
 	                </ul>
 	            </div>
 	        </nav>
