@@ -15,6 +15,17 @@ body {
   font-family: 'Oxygen', sans-serif;
   font-size: 16px; }
 
+.dashboard__properties {
+  display: flex;
+  justify-content: space-between; }
+
+.dashboard__entity {
+  flex: 1; }
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 16px; }
+
 .flex {
   display: flex;
   justify-content: space-between; }

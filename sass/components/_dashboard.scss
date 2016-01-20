@@ -1,0 +1,11 @@
+.dashboard {
+
+	&__properties {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	&__entity {
+		flex: 1;
+	}
+}

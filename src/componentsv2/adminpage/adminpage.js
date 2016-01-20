@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react'
 
 // Import components here
 
+import Navbar from '../navbar'
+
 class AdminPage extends Component {
 
 	componentDidMount () {
@@ -40,8 +42,6 @@ class AdminPage extends Component {
 			            "limit": 100,
 			            "offset": 0,
 			            "report_id": "reports:schema:action:646272055:1354571749",
-			            // "report": reportObject,
-			            // "segments": segmentsArray
 			        })
 			 
 			    },
@@ -54,8 +54,6 @@ class AdminPage extends Component {
 			        	chartData[ v.i ] = v.cells[ 0 ] 
 			        })
 
-					console.log( rows, data.rows, chartData )
-
 			    }
 			});
 
@@ -66,9 +64,9 @@ class AdminPage extends Component {
 		  	  	}
 		  	});
 
-		}, 1000);
+		}, 1000 )
 
-		let channel = "c3-bar" + Math.random();
+		let channel = "c3-bar" + Math.random()
 		
 		eon.chart({
 		  	channel: channel,
@@ -111,8 +109,6 @@ class AdminPage extends Component {
 			            "limit": 100,
 			            "offset": 0,
 			            "report_id": "reports:schema:action:646272055:1354571749",
-			            // "report": reportObject,
-			            // "segments": segmentsArray
 			        })
 			 
 			    },
@@ -121,42 +117,62 @@ class AdminPage extends Component {
 
 			        let rows = data.rows
 
-			        $.each( rows, ( k, v ) => {
+			        $.each( data.rows, ( k, v ) => {
 			        	chartData[ v.i ] = v.cells[ 0 ] 
 			        })
 
-					console.log( rows, data.rows, chartData )
+					pubnub.publish({
+				      channel: 'c3-donut',
+				      message: {
+				        eon: chartData
+				      }
+				    })
 
 			    }
 			});
 
-		  	pubnub.publish({
-			  	channel: 'c3-pie',
-			  	message: {
-			  	  	eon: chartData
-			  	}
-			});
+		}, 3000 )
 
-		}, 1000);
-
+		// Firts load
+		pubnub.publish({
+	      channel: 'c3-donut',
+	      message: {
+	        eon: chartData
+	      }
+	    })
+		
 		eon.chart({
-		  channel: 'c3-pie',
-		  generate: {
-		    bindto: '#enceladus-dashboard-pie',
-		    data: {
-		      labels: true,
-		      type: 'donut'
+		    pubnub: pubnub,
+		    channel: 'c3-donut',
+		    generate: {
+		      bindto: '#enceladus-dashboard-pie',
+		      data: {
+		        labels: true,
+		        type: 'donut'
+		      }
 		    }
-		  }
-		});
+		})
+
 	}
 
 	render() {
 		return (
-			<section className="dashboard">
-				<h3>Direct sales</h3>
-				<div id="enceladus-dashboard-bar" style={{ width: 500 }}></div>
-				<div id="enceladus-dashboard-pie" style={{ width: 500 }}></div>
+			<section className="dashboard" id="dashboard">
+				<Navbar />
+				<h3 className="center-align">Dashboard</h3>
+				<section className="dashboard__properties">
+					<article className="dashboard_entity" style={{ width: 500 }}>
+						<h4 className="center-align">Direct Sales</h4>
+						<div id="enceladus-dashboard-bar"></div>
+					</article>
+					<article className="dashboard_entity" style={{ width: 500 }}>
+						<h4 className="center-align">Sales Percentage</h4>
+						<div id="enceladus-dashboard-pie"></div>
+					</article>
+					<article className="dashboard_entity" style={{ width: 500 }}>
+
+					</article>
+				</section>
 			</section>
         )
 	}
