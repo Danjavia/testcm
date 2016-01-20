@@ -46,7 +46,6 @@ class AdminPage extends Component {
 			 
 			    },
 			    success: function ( data ) {
-			    	console.log( data )
 
 			        let rows = data.rows
 
@@ -113,7 +112,6 @@ class AdminPage extends Component {
 			 
 			    },
 			    success: function ( data ) {
-			    	console.log( data )
 
 			        let rows = data.rows
 
@@ -152,6 +150,42 @@ class AdminPage extends Component {
 		      }
 		    }
 		})
+
+
+		// Trackjs errors
+
+		setInterval ( () => {
+			$.ajax({
+			    type: 'GET',
+			    url: 'https://api.trackjs.com/052da5ad7afb467f8d4ee9800ab029a0/v1/errors/',
+			    crossDomain: true,
+			    dataType: "json",
+			    jsonp: false,
+			    cache: false,
+			    beforeSend: function (xhr) {
+			        xhr.setRequestHeader( 'Authorization', 'c5498b9967c322c9231eda204f9cdc1');
+			    },
+			    success: function ( data ) {
+			    	console.log( data, 'fruher' )
+
+
+			        // let rows = data.rows
+
+			        // $.each( rows, ( k, v ) => {
+			        // 	chartData[ v.i ] = v.cells[ 0 ] 
+			        // })
+
+			    }
+			});
+
+		  	// pubnub.publish({
+		  	//   	channel: channel,
+		  	//   	message: {
+		  	//   		eon: chartData
+		  	//   	}
+		  	// });
+
+		}, 1000 )
 
 	}
 

@@ -17,7 +17,7 @@ body {
 
 .dashboard__properties {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-around; }
 
 .dashboard__entity {
   flex: 1; }
