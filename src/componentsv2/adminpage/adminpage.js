@@ -236,7 +236,7 @@ class AdminPage extends Component {
 						<div id="enceladus-dashboard-points"></div>
 					</article>
 				</section>
-				<h3 className="center-align">Realtime actions tracking</h3>
+				<h3 className="center-align">Realtime actions tracking &copy; 2016 sample test</h3>
 			</section>
         )
 	}
