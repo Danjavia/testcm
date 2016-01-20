@@ -157,7 +157,7 @@ class AdminPage extends Component {
 		setInterval ( () => {
 			$.ajax({
 			    type: 'GET',
-			    url: 'https://api.trackjs.com/052da5ad7afb467f8d4ee9800ab029a0/v1/errors/',
+			    url: 'https://api.trackjs.com/052da5ad7afb467f8d4ee9800ab029a0/v1/errors',
 			    crossDomain: true,
 			    dataType: "json",
 			    jsonp: false,
